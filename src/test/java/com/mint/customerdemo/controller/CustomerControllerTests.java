@@ -23,7 +23,7 @@ public class CustomerControllerTests {
     private CustomerController customerController;
 
     @Test
-    public void testAddCustomer(){
+    public void testCreateCustomer(){
         Customer customer1 = new Customer();
         customer1.setFirstName("first1");
         customer1.setLastName("last1");
@@ -34,6 +34,24 @@ public class CustomerControllerTests {
         assert(customerList.size()>0);
     }
 
+    @Test
+    public void testUpdateCustomer(){
+        Customer customer1 = new Customer();
+        customer1.setFirstName("first1");
+        customer1.setLastName("last1");
+        customer1.setAddress("address1");
+        customerController.saveCustomer(customer1);
+
+        List<Customer> customerList1 = customerController.searchCustomer("first1");
+        assert(customerList1.size()>0);
+
+        Customer customer2 = customerList1.get(0);
+        customer2.setLastName("last2");
+        customerController.saveCustomer(customer2);
+
+        List<Customer> customerList2 = customerController.searchCustomer("first1");
+        assert(customerList2.size()>0);
+    }
 
     @Test
     public void testDeleteCustomer(){
@@ -42,6 +60,5 @@ public class CustomerControllerTests {
         List<Customer> customerList = customerController.searchCustomer("first1");
         assert(customerList==null || customerList.size()==0);
     }
-
 
 }

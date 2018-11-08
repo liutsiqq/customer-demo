@@ -25,7 +25,7 @@ public class ConsumerControllerTests {
     private CustomerController customerController;
 
     @Test
-    public void testAddCustomer(){
+    public void testListAllCustomers(){
         Customer customer1 = new Customer();
         customer1.setFirstName("first1");
         customer1.setLastName("last1");
