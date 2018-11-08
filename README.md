@@ -2,7 +2,9 @@ This is a microservices API demo for MINT.
 
 It has 2 controllers
 A: ConsumerController which has 
-  1. List customers 
+  1. List customers
+  
+  
 B: CustomerController which has
   2. Create a new customer
   3. Update a customer
