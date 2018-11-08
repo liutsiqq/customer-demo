@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
@@ -18,7 +17,10 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 //@SpringApplicationConfiguration(classes = MallCoreServiceApplication.class)//这个已过时
 @WebAppConfiguration
-public class CustomerControllerTests {
+public class ConsumerControllerTests {
+    @Autowired
+    private ConsumerController consumerController;
+
     @Autowired
     private CustomerController customerController;
 
@@ -30,17 +32,8 @@ public class CustomerControllerTests {
         customer1.setAddress("address1");
         customerController.saveCustomer(customer1);
 
-        List<Customer> customerList = customerController.searchCustomer("first1");
+        List<Customer> customerList = consumerController.getAllCustomers();
         assert(customerList.size()>0);
-    }
-
-
-    @Test
-    public void testDeleteCustomer(){
-        customerController.deleteCustomer("first1");
-
-        List<Customer> customerList = customerController.searchCustomer("first1");
-        assert(customerList==null || customerList.size()==0);
     }
 
 

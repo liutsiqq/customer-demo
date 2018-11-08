@@ -19,6 +19,11 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    /**
+     * both add and update
+     * @param customer
+     * @return
+     */
     @RequestMapping(value="/customer", method = RequestMethod.POST)
     public Customer saveCustomer(Customer customer) {
         return customerService.updateCustomerInfo(customer);
@@ -29,4 +34,11 @@ public class CustomerController {
         return customerService.findByFirstName(firstName);
     }
 
+    @RequestMapping(value = "/customer", method = RequestMethod.DELETE)
+    public void deleteCustomer(String firstName) {
+        List<Customer> customerList= customerService.findByFirstName(firstName);
+        for (Customer customer: customerList) {
+            customerService.deleteCustomer(customer);
+        }
+    }
 }

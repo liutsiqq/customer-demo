@@ -16,8 +16,12 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Customer updateCustomerInfo(Customer customer) {
+    public synchronized  Customer updateCustomerInfo(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public synchronized  void deleteCustomer(Customer customer) {
+        customerRepository.delete(customer);
     }
 
     public List<Customer> findByFirstName(String firstName){

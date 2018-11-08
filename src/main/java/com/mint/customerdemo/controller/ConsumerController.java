@@ -19,10 +19,11 @@ public class ConsumerController {
     private CustomerService customerService;
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public List<Customer> getAllCustomers(HttpServletRequest request,
-                                      HttpServletResponse response) throws IOException {
+    public List<Customer> getAllCustomers() {
         return customerService.getAllCustomers();
     }
+
+
 
 
 }
